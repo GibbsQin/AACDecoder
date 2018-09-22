@@ -39,9 +39,12 @@ LOCAL_SRC_FILES:=bits.c  	\
 		sbr_qmf.c 	\
 		sbr_syntax.c 	\
 		sbr_tf_grid.c 	\
-		sbr_dec.c
+		sbr_dec.c	\
+		player-jni.c	\
+		player.c
 
 LOCAL_MODULE:=faad
+LOCAL_LDLIBS := -llog
 
 LOCAL_C_INCLUDES := 		\
 	$(LOCAL_PATH)		\

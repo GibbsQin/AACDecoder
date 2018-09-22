@@ -15,7 +15,7 @@
 jboolean Java_com_gibbs_faaddemo_JNI_isNeon(JNIEnv *env, jobject thiz) {
 	uint64_t features;
 
-	LOGE(1, "Java_com_gibbs_faaddemo_JNI_isNeon");
+	LOGE(1, "jni test!");
 
 	return 1;
 }
