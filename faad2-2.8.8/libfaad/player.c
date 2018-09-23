@@ -20,3 +20,8 @@ jboolean Java_com_gibbs_faaddemo_JNI_isNeon(JNIEnv *env, jobject thiz) {
 	return 1;
 }
 
+jboolean Java_com_gibbs_faaddemo_JNI_raw2wav(JNIEnv *env, jobject thiz) {
+	raw2wav();
+	return 1;
+}
+

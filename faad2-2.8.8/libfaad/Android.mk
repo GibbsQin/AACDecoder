@@ -41,7 +41,9 @@ LOCAL_SRC_FILES:=bits.c  	\
 		sbr_tf_grid.c 	\
 		sbr_dec.c	\
 		player-jni.c	\
-		player.c
+		player.c	\
+		faaddec.c	\
+		raw2wav.c
 
 LOCAL_MODULE:=faad
 LOCAL_LDLIBS := -llog
