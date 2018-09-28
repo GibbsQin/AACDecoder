@@ -43,7 +43,8 @@ LOCAL_SRC_FILES:=bits.c  	\
 		player-jni.c	\
 		player.c	\
 		faaddec.c	\
-		raw2wav.c
+		raw2wav.c	\
+		door_bell_decode_aac.c
 
 LOCAL_MODULE:=faad
 LOCAL_LDLIBS := -llog
@@ -57,5 +58,5 @@ LOCAL_C_INCLUDES := 		\
 LOCAL_CFLAGS:=		\
 	-DHAVE_CONFIG_H
 
-include $(BUILD_SHARED_LIBRARY)
+include $(BUILD_STATIC_LIBRARY)
 
