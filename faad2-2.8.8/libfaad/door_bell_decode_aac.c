@@ -62,4 +62,30 @@ int aac_decode(NeAACDecHandle hDecoder, short *pInputBuf, uint32_t dwInputSize, 
 	return 0;
 }
 
+void raw2adts(unsigned char *buffer, int recv_bytes, unsigned char* save_buffer)
+{
+    int save_len = 0; // 7 bytes adts head
+    // 解码
+    if (buffer[12] == 0xff)
+    {
+        memcpy(&(save_buffer[7]), &(buffer[14]), recv_bytes - 14);
+        save_len += (recv_bytes - 14);
+    }
+    else
+    {
+        memcpy(&(save_buffer[7]), &(buffer[13]), recv_bytes - 13);
+        save_len += (recv_bytes - 13);
+    }
+    save_len += 7;
+    save_buffer[0] = (char) 0xff;
+    save_buffer[1] = (char) 0xf9;
+	//0x06  means  24000Hz  ; 0x03  means 48000Hz can not play
+    save_buffer[2] = (0x01 << 6) | (0x0b << 2) | 0x00;
+	//双声道？ a=rtpmap:97 mpeg4-generic/44100/2
+    //单声道？(char)0x40;    a=rtpmap:97 mpeg4-generic/44800
+    save_buffer[3] = (char) 0x40;
+    save_buffer[4] = (save_len >> 3)&0xff;
+    save_buffer[5] = ((save_len & 0x07) << 5 | 0x1f);
+    save_buffer[6] = (char) 0xfc;
+}
 
